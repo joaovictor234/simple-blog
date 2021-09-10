@@ -17,7 +17,7 @@ The following tools were used in the construction of the project:
  - João Victor Fernandes
 
   - [Linkedin](https://www.linkedin.com/in/jo%C3%A3o-victor-fernandes-b84a581a7/)
-  - [Gmail](https://mail.google.com/mail/u/joaovictorfernandespinto#gmail.com)
+  - [Gmail](https://mail.google.com/mail/joaovictorfernandespinto#gmail.com)
   - [Instagram](https://www.instagram.com/jakvictor234/)
 
  ### License
