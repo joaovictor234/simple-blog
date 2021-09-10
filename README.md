@@ -1,8 +1,8 @@
 # Simple Blog
 
-## A simple project build of a blog
+### A simple project build of a blog
 
-## Status of project: in build
+### Status of project: in build
 
 ### technologys
 
