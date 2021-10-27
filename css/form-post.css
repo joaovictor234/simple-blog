@@ -1,0 +1,27 @@
+#input__post {
+    width: 90%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+.input__post--title {
+    font-size: 1.8rem;
+    margin: 0;
+    text-align: center;
+}
+.input-field label {
+    color: #fff;
+}
+#title {
+    color: #fff;
+}
+.input__post--description {
+    height: 50px;
+    margin-top: 8px;
+    color: #fff;
+}
+.input__button--post {
+    display: flex;
+    justify-content: end;
+}

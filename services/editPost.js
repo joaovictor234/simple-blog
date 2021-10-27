@@ -1,17 +1,14 @@
 import { compareParents } from "./compareParents.js"
+import { showOrHideForm, createPost } from "./post.js";
 
-//função para editar o post
 export const editButton = (event) => {
-    let parent = compareParents(event.target);
-    let ul = parent.parentElement;
-    let userDiv = ul.parentElement;
-    let childs = userDiv.firstChild;
+    let liElement = compareParents(event.target);
+    let title = liElement.find('.titleUser-post').text();
+    let description = liElement.find('.content-post').text();
+    showOrHideForm();
 
-    console.log(childs);
-
-    let child = parent.firstChild;
-    let title = child.lastChild;
-    let description = child.nextSibling;
-
+    let input = liElement.parent().parent().find('.card-content');
+    input.find('#title').val(title);
+    input.find('#description').val(description);
 
 }

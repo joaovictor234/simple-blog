@@ -4,34 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/user_container.css">
-    <link rel="stylesheet" href="/css/input-post.css">
-    <link rel="stylesheet" href="/css/post.css">
-    <link rel="stylesheet" href="../css/comment.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/principal.css">
+    <link rel="stylesheet" href="../css/user__header.css">
+    <link rel="stylesheet" href="../css/form-post.css">
+    <link rel="stylesheet" href="../css/post.css">
     <link rel="stylesheet" href="../css/hide.css">
+    <link rel="stylesheet" href="../css/comment.css">
     <title>Blog</title>
 </head>
-<body>
+<body class=" blue lighten-2">
     <main class="principal">
 
         <div class="user__container">   
-            <div class="user__acount">
+            <div class="user__header purple darken-4">
                 <div>
                     <div class="user__profile">
                         <img src="https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif" alt="" height="50" width="50" class="user__image">
                         <p class="user__name">Anonymous</p>
                     </div>
                 </div>
-                <div class="add-post" data-show-form><i class="fas fa-plus-circle"></i><p data-show-text>Add a new post</p></div>
+                <button id="add-post" class="btn-floating btn-medium waves-effect waves-light red" title="add a post"><i class="material-icons">add</i></button>
             </div>
 
-            <form class="input__post hide">
-                <h2 class="input__post--title">Add a post</h2>
-                <label for="title" class="input__post--label">Title of post</label><input type="text" name="title" id="title"  data-title required>
-                <label for="description" class="input__post--label">Description of post</label><textarea type="text" name="description" id="description" rows="5" data-description required></textarea>
-                <button class="input__button--post" data-button-post>Post</button>
+            <form id="input__post" class="card deep-purple darken-4 hide">
+                <div class="card-content">
+                    <h2 class="input__post--title">Add a post</h2>
+                    <div class="input-field">
+                        <label for="title" class="input__post--label validate">Title of post</label><input type="text" name="title" id="title"  data-title required>
+                    </div>
+                    <div class="input-field">
+                        <label for="description" class="input__post--label validate">Description of post</label><textarea type="text" name="description" id="description" class="input__post--description" rows="5" data-description required></textarea>
+                    </div>
+                    <div class="input__button--post">
+                        <button class="btn-floating btn-medium waves-effect waves-light blue" data-button-post><i class="material-icons">send</i></button>
+                    </div>
+                </div>
             </form>
 
             <ul class="post-list" data-list>
@@ -41,5 +50,7 @@
 
     </main>
     <script type="module" src="/services/post.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </body>
 </html>

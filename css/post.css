@@ -1,66 +1,59 @@
-.post-list {
-    height: auto;
-    width: 90%;
-}
 .post {
-    background: #727273;
-    border-radius: 6px;
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px 0;
+}
+.header-post {
     display: flex;
     flex-direction: column;
-    margin: 1rem;
-    padding: 1rem;
+    margin: 5px;
 }
-.title-post {
-    align-items: center;
+.user-header {
     display: flex;
-    margin-bottom: 0.7rem;
+    align-items: center;
 }
-.image-post {
+.imgUser-post {
     border-radius: 50%;
-    margin-right: 0.5rem;
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
 }
 .nameUser-post {
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
+    margin: 0;
+    margin-right: 5px;
+}
+.titleUser-post {
+    margin: 0;
+    font-size: 19px;
+}
+.post-img {
+    height: 100%;
+    width: 100%;
 }
 .content-post {
-    background: #3F3F40;
-    border-radius: 5px;
-    font-size: 1.3rem;
-    margin: 1rem 0;
-    padding: 0.3rem 1rem;
-    text-align: justify;
-}
-.content-post:nth-child(2) {
-    margin: 0;
+    margin: 5px;
+    font-size: 18px;
 }
 .containerButtons {
-    align-items: center;
     display: flex;
     justify-content: space-between;
-}
-.contentButtons {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
-    width: auto;
+    margin: 5px;
 }
 .buttonPost {
-    background: #8D8E8F;
+    margin: 3px;
+}
+.containerComment {
+    margin: 0 15px;
+    border: 1px solid #333;
+    padding: 5px;
     border-radius: 10px;
-    color: #fdfdfd;
+}
+.containerComment input {
+    margin-bottom: 0;
+    height: 25px;
+}
+.textAndButton {
     display: flex;
-    justify-content: center;
-    margin: 0 0.2rem;
-    padding: 0.2rem 0.6rem;
-    transition: 0.5s;
-    border-style: none;
-}
-.buttonPost:hover {
-    background: #FCFDFF;
-    color: #333;
-}
-.text-p {
-    margin-left: 0.3rem;
-    width: 100%;
+    justify-content: space-between;
+    align-items: center;
 }

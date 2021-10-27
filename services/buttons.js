@@ -2,82 +2,74 @@ import { compareParents } from "./compareParents.js";
 import { newComment, addComment, showOrHideComments } from "./comments.js";
 import { editButton } from "./editPost.js";
 
-//função para excluir o post criado
-//function to delete the created post
-export const deleteButton = (event) => {
-    let target = event.target;
-    let parent = compareParents(target);
-    parent.remove();
+export const deletePost = (event) => {
+    compareParents(event.target)
+    .remove();
 }
 
-//função para criar um botão para editar o post
-//function to create a button to edit the post
+const createButtonClass = () => {
+    return $('<button>')
+            .addClass('buttonPost')
+            .addClass('btn-floating')
+            .addClass('btn-small')
+            .addClass('waves-effect')
+            .addClass('waves-light');
+}
+
+function createIcon() {
+    return $('<i>')
+            .addClass('material-icons');
+}
+
 export const createEditButton = () => {
-    let edit = document.createElement('button');
-    edit.classList.add('editPost');
-    edit.classList.add('buttonPost');
-    let icon = document.createElement('i');
-    icon.classList.add('fas');
-    icon.classList.add('fa-edit');
-    let p = document.createElement("p");
-    p.classList.add('text-p')
-    let text = document.createTextNode("Edit");
-    p.appendChild(text);
-    edit.appendChild(icon);
-    edit.appendChild(p);
-    edit.addEventListener('click', editButton);
+    let edit = createButtonClass();
+    edit.addClass('yellow');
+    let icon = createIcon();
+    icon.text('edit');
+    edit.append(icon)
+    .click(editButton)
+    .title = 'Edit post';
     return edit;
 }
 
-//função para criar um botão para excluir o post
-//function to create a button to delete the post
 export const createDeleteButton = () => {
-    let delet = document.createElement('button')
-    delet.classList.add('deletePost');
-    delet.classList.add('buttonPost');
-    let icon = document.createElement('i');
-    icon.classList.add("fas");
-    icon.classList.add("fa-trash-alt");
-    delet.appendChild(icon);
+    let delet = createButtonClass();
+    delet.addClass('red');
+    let icon = createIcon();
+    icon.text('delete');
+    delet.append(icon);
     return delet;
 }
 
-//função para exibir ou esconder os comentários
-//function to show or hide comments
 export const viewComments = () => {
-    let comment = document.createElement('button');
-    comment.classList.add('buttonPost');
-
-    let icon = document.createElement('i');
-    icon.classList.add('fas');
-    icon.classList.add('fa-comments');
-    comment.appendChild(icon);
-    comment.addEventListener('click', showOrHideComments);
-
+    let comment = createButtonClass();
+    comment.addClass('orange');
+    let icon = createIcon();
+    icon.text('chat');
+    comment.append(icon)
+    .click(showOrHideComments)
+    .title = 'View Comments';
     return comment;
 }
 
-//função para criar um botão para adicionar um novo comentário
 export const createButtonToAddComment = () => {
-    let submit = document.createElement('button');
-    submit.classList.add('buttonPost');
-    let icon = document.createElement('i');
-    icon.classList.add('fas');
-    icon.classList.add('fa-plus-square');
-    submit.appendChild(icon);
-    submit.addEventListener('click', addComment);
+    let submit = createButtonClass();
+    submit.addClass('blue');
+    let icon = createIcon();
+    icon.text('send');
+    submit.append(icon)
+    .click(addComment)
+    .title = 'Post a comment';
     return submit;
 }
 
-//função para criar um botão para adicionar comentário
-//function to create a button to add a new comment
 export const createAddNewComment = () => {
-    let comment = document.createElement('button');
-    comment.classList.add('buttonPost');
-    let icon = document.createElement('i');
-    icon.classList.add('fas');
-    icon.classList.add('fa-comment-medical');
-    comment.appendChild(icon);
-    comment.addEventListener('click', newComment);
+    let comment = createButtonClass();
+    comment.addClass('orange');
+    let icon = createIcon();
+    icon.text('chat_bubble');
+    comment.append(icon)
+    .click(newComment)
+    .title = 'Add a comment';
     return comment;
 }

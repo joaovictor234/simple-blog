@@ -1,82 +1,73 @@
-import { createEditButton, createDeleteButton, createAddNewComment, viewComments, deleteButton } from "./buttons.js";
+import { createEditButton, createDeleteButton, createAddNewComment, viewComments, deletePost } from "./buttons.js";
 
-const buttonCreatePost = document.querySelector("[data-button-post]");
-const showForm = document.querySelector("[data-show-form]");
-const form = document.querySelector('.input__post');
+const buttonCreatePost = $("[data-button-post]");
+const showForm = $("#add-post");
+const form = document.querySelector('#input__post');
 
-
-//função para mostrar ou esconder o formulário de inserção do post
-//function to show or hide the post insertion form
-const showOrHideForm = () => {
+export function showOrHideForm() {
     let hide = form.classList.toggle('hide');
     if(!hide) {
-        showForm.innerHTML = `<i class="fas fa-minus-circle"></i> Back`
+        showForm.html(`<i class="material-icons">close</i>`)
+        .title = "close form";
     } else {
-        showForm.innerHTML = `<i class="fas fa-plus-circle"></i> Add a new post`
+        showForm.html(`<i class="material-icons">add</i>`)
+        .title = "add a post";
     }
 }
 
-//função para criar o post
-//function to create the post
-const createPost = (event) => {
-    event.preventDefault();
-    let postList = document.querySelector("[data-list]");
-    let inputTitle = document.querySelector("[data-title]")
-    let inputDescription = document.querySelector("[data-description]");
+export const createPost = (comments) => {
+    let postList = $("[data-list]");
+    let inputTitle = $("[data-title]")
+    let inputDescription = $("[data-description]");
 
-    //criação dos elementos
-    //creation of the elements
-    let title = inputTitle.value;
-    let description = inputDescription.value;
+    let title = inputTitle.val();
+    let description = inputDescription.val();
 
-    let post = document.createElement('li');
-    post.classList.add('post')
+    let post = $('<li>').addClass('card').addClass('post');
 
-    let headerPost = document.createElement('div');
-    headerPost.classList.add("title-post");
+    let headerPost = $('<div>').addClass('header-post')
 
-    const headerContent = `<img src="https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif" alt="" height="25" width="25" class="image-post">
-                            <p class="nameUser-post">Anonymous:</p>
-                            <p class="titleUser-post">${title}</p>`
-    headerPost.innerHTML = headerContent;
+    let img = document.createElement('img')
+    img.classList.add('post-img')
+    img.src = "https://images.pexels.com/photos/5764015/pexels-photo-5764015.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
 
-    //criação dos botões de manipulação do post
-    //creation of post manipulation buttons
-    let buttons = document.createElement('div');
-    buttons.classList.add('contentButtons');
-    buttons.appendChild(createEditButton());
+    const headerContent = `<div class="user-header"><img src="https://upload.wikimedia.org/wikipedia/en/e/ee/Unknown-person.gif" alt="" class="imgUser-post"><p class="nameUser-post">Anonymous</p></div><div><p class="titleUser-post">${title}</p></div>`;
+
+    headerPost.html(headerContent);
+
+    let buttons = $('<div>').addClass('contentButtons')
+    .append(createEditButton());
     let buttonDelete = createDeleteButton();
-    let p = document.createElement("p");
-    p.classList.add('text-p')
-    let text = document.createTextNode("Delete");
-    p.appendChild(text);
-    buttonDelete.appendChild(p);
-    buttonDelete.addEventListener('click', deleteButton);
-    buttons.appendChild(buttonDelete);
+    buttonDelete.click(deletePost);
+    buttons.append(buttonDelete)
+    .title = 'Delete post';
 
-    let commentButton = document.createElement('div');
-    commentButton.classList.add('contentButtons');
-    commentButton.appendChild(createAddNewComment());
-    commentButton.appendChild(viewComments());
+    let commentButton = $('<div>')
+    .addClass('contentButtons')
+    .append(createAddNewComment())
+    .append(viewComments());
 
-    let contentButtons = document.createElement('div');
-    contentButtons.classList.add('containerButtons');
-    contentButtons.appendChild(commentButton);
-    contentButtons.appendChild(buttons);
+    let contentButtons = $('<div>')
+    .addClass('containerButtons')
+    .append(commentButton)
+    .append(buttons);
 
-    //descrição do post em si.
-    //description of the post itself.
     const content = `<p class="content-post">${description}</p>`;
 
-    post.appendChild(headerPost);
-    post.innerHTML += content;
-    post.appendChild(contentButtons);
+    const ul = $('<ul>')
+    ul.addClass('commentsList');
 
-    postList.appendChild(post);
-    inputTitle.value = " ";
-    inputDescription.value = " ";
+    post.append(headerPost)
+    .append(img)
+    .append(content)
+    .append(contentButtons)
+    .append(ul);
+
+    postList.prepend(post);
+    inputTitle.val("");
+    inputDescription.val("");
     showOrHideForm();
 }
 
-showForm.addEventListener('click', showOrHideForm);
-buttonCreatePost.addEventListener("click", createPost);
+showForm.on('click', showOrHideForm);
+buttonCreatePost.on('click', createPost);

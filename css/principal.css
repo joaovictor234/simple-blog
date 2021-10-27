@@ -1,0 +1,32 @@
+html,
+body {
+	height: 100%;
+}
+body {
+    display: flex;
+    justify-content: center;
+}
+.principal {
+    width: 55%;
+    height: 100%;
+}
+.user__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (max-width: 375px) {
+    .principal {
+        width: 100vw;
+    }
+}
+@media (max-width: 425px) {
+    .principal {
+        width: 80%;
+    }
+}
+@media (max-width: 768px) {
+    .principal {
+        width: 70%;
+    }
+}
